@@ -19,6 +19,10 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 remove_action( 'woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_button_view_cart', 10 );
 remove_action('storefront_post_content_before', 'storefront_post_thumbnail', 10 );
 
+add_action( 'init', 'stop_heartbeat', 1 );
+function stop_heartbeat() {
+wp_deregister_script('heartbeat'); }
+
 function my_wc_add_to_cart_redirect_to_checkout( $url ) {
 	return wc_get_checkout_url();}
 add_filter( 'woocommerce_add_to_cart_redirect', 'my_wc_add_to_cart_redirect_to_checkout' );
