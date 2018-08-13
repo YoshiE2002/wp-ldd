@@ -25,7 +25,7 @@ wc_print_notices();
 /**
  * @hooked wc_empty_cart_message - 10
  */
-if ( is_page('cart') and !sizeof($woocommerce->cart->cart_contents) ) :
+if ( is_page('cart') and WC()->cart->get_cart_contents_count() == 0 ) :
 do_action( 'woocommerce_cart_is_empty' ); ?>
 	<p class="return-to-shop">
 		<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
